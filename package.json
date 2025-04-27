@@ -1,0 +1,28 @@
+{
+  "name": "github-comment-helper",
+  "version": "1.0.0",
+  "description": "GitHub Comment Helper Extension",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "lint": "biome check .",
+    "lint:fix": "biome check --apply .",
+    "format": "biome format .",
+    "format:fix": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/chrome": "^0.0.237",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}

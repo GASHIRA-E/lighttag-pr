@@ -1,0 +1,38 @@
+# 依存関係
+node_modules/
+
+# ビルドファイル
+github-comment-helper/js/*
+
+# ログファイル
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# エディタ関連
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.sublime-*
+*.swp
+*.swo
+
+# OS関連
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 環境変数
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# その他
+coverage/
+.nyc_output/
+dist/

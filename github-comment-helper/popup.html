@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub Comment Helper</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 250px;
+      padding: 10px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+      background-color: #f6f8fa;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+    }
+    button:hover {
+      background-color: #f3f4f6;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h3>GitHub Comment Helper</h3>
+  <div class="container">
+    <button id="openOptions">設定を開く</button>
+    <button id="goToGitHub">GitHubを開く</button>
+  </div>
+  <script src="js/popup.js"></script>
+</body>
+</html>
