@@ -3,7 +3,7 @@ import { useState } from "react";
 import type { LabelsConfig, SelectedLabel } from "../types";
 import { LabelButton } from "./LabelButton";
 import { LabelSelector } from "./LabelSelector";
-import { addLabelToTextarea } from "../utils/content/addLabelToTextarea";
+import { addLabelToTextarea } from "../utils/content/labels";
 
 interface CommentHelperAppProps {
   commentField: HTMLTextAreaElement;
@@ -41,14 +41,14 @@ export function CommentHelperApp({
   };
 
   // 選択したラベルをコメント入力欄に挿入
-  const insertLabels = (): void => {
+  const handleInsertLabels = (): void => {
     if (selectedLabels.length === 0) return;
 
     // 選択したラベルのテキストのみの配列を作成
     const labelTextsOnly = selectedLabels.map((item) => item.label);
-    
+
     // addLabelToTextarea関数を呼び出し
-    addLabelToTextarea(labelTextsOnly);
+    addLabelToTextarea(commentField, labelTextsOnly);
 
     // セレクターを閉じる
     setIsOpen(false);
@@ -66,7 +66,7 @@ export function CommentHelperApp({
           labelsConfig={labelsConfig}
           selectedLabels={selectedLabels}
           onLabelClick={toggleLabel}
-          onInsert={insertLabels}
+          onInsert={handleInsertLabels}
           onCancel={() => setIsOpen(false)}
         />
       )}

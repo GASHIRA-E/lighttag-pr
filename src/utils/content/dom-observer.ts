@@ -1,5 +1,4 @@
 // DOM監視関連機能
-import { addUIToCommentBoxes } from "./ui";
 
 // DOM変更を監視するObserverを作成
 export function createObserver(callback: () => void): MutationObserver {
@@ -19,13 +18,4 @@ export function createObserver(callback: () => void): MutationObserver {
   });
 
   return observer;
-}
-
-// コメント入力欄を監視して拡張UIを追加
-export function setupCommentHelper(): void {
-  // GitHub PR画面のコメント入力欄を監視
-  createObserver(addUIToCommentBoxes);
-
-  // 初期ロード時にもチェック
-  addUIToCommentBoxes();
 }

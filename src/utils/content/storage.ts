@@ -1,5 +1,5 @@
 // ストレージ関連機能
-import { LabelsConfig } from "../types";
+import type { LabelsConfig } from "../../types";
 
 // ラベル設定をストレージから読み込み
 export async function loadLabelsConfig(): Promise<LabelsConfig> {
