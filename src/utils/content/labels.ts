@@ -1,11 +1,12 @@
 // ラベル操作関連の機能
+
 /**
  * ラベルをテキストエリアに挿入する関数（単純版）
  * @param labels 挿入するラベルの配列
  */
 export function addLabelToTextarea(
   textareaField: HTMLTextAreaElement,
-  labels: string[]
+  labels: string[],
 ): void {
   // ラベルをテキスト形式に変換
   const labelTexts = labels.map((label) => `[${label}]`);

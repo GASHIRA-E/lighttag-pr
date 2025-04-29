@@ -1,17 +1,20 @@
 import type React from "react";
 import type { LabelGroup as LabelGroupType, SelectedLabel } from "../types";
 import { LabelItem } from "./LabelItem";
+import type { DisplayMode } from "../utils/content/storage";
 
 interface LabelGroupProps {
   group: LabelGroupType;
   selectedLabels: SelectedLabel[];
   onLabelClick: (label: string, type: string) => void;
+  displayMode: DisplayMode;
 }
 
 export function LabelGroup({
   group,
   selectedLabels,
   onLabelClick,
+  displayMode,
 }: LabelGroupProps): React.JSX.Element {
   return (
     <div className="gh-label-group-container">
@@ -19,7 +22,7 @@ export function LabelGroup({
       <div className="gh-label-group">
         {group.items.map((item, index) => {
           const isSelected = selectedLabels.some(
-            (l) => l.label === item.label && l.type === group.type
+            (l) => l.label === item.label && l.type === group.type,
           );
 
           return (
@@ -29,6 +32,7 @@ export function LabelGroup({
               description={item.description}
               isSelected={isSelected}
               onClick={() => onLabelClick(item.label, group.type)}
+              displayMode={displayMode}
             />
           );
         })}

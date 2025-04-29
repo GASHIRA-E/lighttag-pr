@@ -1,9 +1,10 @@
 import type React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { LabelsConfig, SelectedLabel } from "../types";
 import { LabelButton } from "./LabelButton";
-import { LabelSelector } from "./LabelSelector";
 import { addLabelToTextarea } from "../utils/content/labels";
+import { getDisplayMode, type DisplayMode } from "../utils/content/storage";
+import { LabelModal } from "./LabelModal";
 
 interface CommentHelperAppProps {
   commentField: HTMLTextAreaElement;
@@ -16,6 +17,16 @@ export function CommentHelperApp({
 }: CommentHelperAppProps): React.JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedLabels, setSelectedLabels] = useState<SelectedLabel[]>([]);
+  const [displayMode, setDisplayMode] = useState<DisplayMode>("pro");
+
+  // 初期表示モードを読み込み
+  useEffect(() => {
+    const loadDisplayMode = async (): Promise<void> => {
+      const mode = await getDisplayMode();
+      setDisplayMode(mode);
+    };
+    loadDisplayMode();
+  }, []);
 
   // ラベルセレクターの表示/非表示を切り替え
   const toggleSelector = (): void => {
@@ -25,7 +36,7 @@ export function CommentHelperApp({
   // ラベルの選択状態を切り替え
   const toggleLabel = (label: string, type: string): void => {
     const index = selectedLabels.findIndex(
-      (l) => l.label === label && l.type === type
+      (l) => l.label === label && l.type === type,
     );
 
     if (index >= 0) {
@@ -61,15 +72,16 @@ export function CommentHelperApp({
     <div className="gh-label-helper">
       <LabelButton onClick={toggleSelector} />
 
-      {isOpen && (
-        <LabelSelector
-          labelsConfig={labelsConfig}
-          selectedLabels={selectedLabels}
-          onLabelClick={toggleLabel}
-          onInsert={handleInsertLabels}
-          onCancel={() => setIsOpen(false)}
-        />
-      )}
+      <LabelModal
+        isOpen={isOpen}
+        labelsConfig={labelsConfig}
+        selectedLabels={selectedLabels}
+        onLabelClick={toggleLabel}
+        onInsert={handleInsertLabels}
+        onCancel={() => setIsOpen(false)}
+        displayMode={displayMode}
+        setDisplayMode={setDisplayMode}
+      />
     </div>
   );
 }

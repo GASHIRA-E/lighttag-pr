@@ -22,7 +22,7 @@ async function initializeExtension(): Promise<void> {
 function mountReactComponents(labelsConfig: LabelsConfig): void {
   // GitHub PR画面のテキストエリアのコンテナを特定
   const commentForm = document.querySelectorAll<HTMLTextAreaElement>(
-    ".js-previewable-comment-form"
+    ".js-previewable-comment-form",
   );
 
   // テキストエリア要素を取得
@@ -41,8 +41,6 @@ function mountReactComponents(labelsConfig: LabelsConfig): void {
 
     // コンテナを作成
     const helperContainer = document.createElement("div");
-    helperContainer.style.position = "relative";
-    helperContainer.style.marginBottom = "8px";
     helperContainer.className = "gh-comment-helper-container";
 
     // コメント入力欄の前に挿入
@@ -54,7 +52,7 @@ function mountReactComponents(labelsConfig: LabelsConfig): void {
       <CommentHelperApp
         commentField={commentFields[0]}
         labelsConfig={labelsConfig}
-      />
+      />,
     );
   }
 }

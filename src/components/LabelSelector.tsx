@@ -1,22 +1,20 @@
 import type React from "react";
 import type { LabelsConfig, SelectedLabel } from "../types";
 import { LabelGroup } from "./LabelGroup";
-import { ActionButtons } from "./ActionButtons";
+import type { DisplayMode } from "../utils/content/storage";
 
 interface LabelSelectorProps {
   labelsConfig: LabelsConfig;
   selectedLabels: SelectedLabel[];
+  displayMode: DisplayMode;
   onLabelClick: (label: string, type: string) => void;
-  onInsert: () => void;
-  onCancel: () => void;
 }
 
 export function LabelSelector({
   labelsConfig,
   selectedLabels,
+  displayMode,
   onLabelClick,
-  onInsert,
-  onCancel,
 }: LabelSelectorProps): React.JSX.Element {
   return (
     <div className="gh-label-selector">
@@ -26,10 +24,9 @@ export function LabelSelector({
           group={group}
           selectedLabels={selectedLabels}
           onLabelClick={onLabelClick}
+          displayMode={displayMode}
         />
       ))}
-
-      <ActionButtons onInsert={onInsert} onCancel={onCancel} />
     </div>
   );
 }

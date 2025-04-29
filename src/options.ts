@@ -3,17 +3,17 @@ import type { LabelsConfig, LabelItem } from "./types";
 
 // DOM要素
 const labelGroupsContainer = document.getElementById(
-  "labelGroups"
+  "labelGroups",
 ) as HTMLDivElement;
 const addGroupBtn = document.getElementById("addGroupBtn") as HTMLButtonElement;
 const configJsonTextarea = document.getElementById(
-  "configJson"
+  "configJson",
 ) as HTMLTextAreaElement;
 const exportBtn = document.getElementById("exportBtn") as HTMLButtonElement;
 const importBtn = document.getElementById("importBtn") as HTMLButtonElement;
 const saveBtn = document.getElementById("saveBtn") as HTMLButtonElement;
 const statusMessage = document.getElementById(
-  "statusMessage"
+  "statusMessage",
 ) as HTMLDivElement;
 
 // ラベル設定データ
@@ -129,7 +129,7 @@ function renderLabelGroups(): void {
 function createLabelItemElement(
   groupIndex: number,
   itemIndex: number,
-  item: LabelItem
+  item: LabelItem,
 ): HTMLDivElement {
   const itemElem = document.createElement("div");
   itemElem.className = "label-item";
