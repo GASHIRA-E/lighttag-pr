@@ -9,7 +9,7 @@ export default defineConfig({
     emptyOutDir: false,
     rollupOptions: {
       input: {
-        content: resolve(__dirname, "src/content.ts"),
+        content: resolve(__dirname, "src/content.tsx"),
         options: resolve(__dirname, "src/options.ts"),
       },
       output: {
