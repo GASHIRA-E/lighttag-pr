@@ -13,6 +13,8 @@
   --color-selected-bg: #ddf4ff;
   --color-selected-border: #54aeff;
   --color-border-alpha: rgba(27, 31, 36, 0.15);
+  --color-warning: #bf8700;
+  --color-warning-hover: #9e7200;
 }
 
 .gh-comment-helper-container {
@@ -203,4 +205,18 @@
 
 .gh-label-cancel-btn:hover {
   background-color: var(--color-bg-light-hover);
+}
+
+.gh-label-clear-btn {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+  border: 1px solid var(--color-border-alpha);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.gh-label-clear-btn:hover {
+  background-color: var(--color-warning-hover);
 }

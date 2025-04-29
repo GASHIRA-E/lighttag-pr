@@ -51,6 +51,11 @@ export function CommentHelperApp({
     }
   };
 
+  // 選択したラベルをクリア
+  const handleClearLabels = (): void => {
+    setSelectedLabels([]);
+  };
+
   // 選択したラベルをコメント入力欄に挿入
   const handleInsertLabels = (): void => {
     if (selectedLabels.length === 0) return;
@@ -79,6 +84,7 @@ export function CommentHelperApp({
         onLabelClick={toggleLabel}
         onInsert={handleInsertLabels}
         onCancel={() => setIsOpen(false)}
+        onClear={handleClearLabels}
         displayMode={displayMode}
         setDisplayMode={setDisplayMode}
       />

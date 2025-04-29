@@ -12,6 +12,7 @@ interface LabelModalProps {
   onLabelClick: (label: string, type: string) => void;
   onInsert: () => void;
   onCancel: () => void;
+  onClear: () => void;
   displayMode: DisplayMode;
   setDisplayMode: (mode: DisplayMode) => void;
 }
@@ -23,6 +24,7 @@ export function LabelModal({
   onLabelClick,
   onInsert,
   onCancel,
+  onClear,
   displayMode,
   setDisplayMode,
 }: LabelModalProps): React.JSX.Element | null {
@@ -76,7 +78,7 @@ export function LabelModal({
         displayMode={displayMode}
       />
 
-      <ActionButtons onInsert={onInsert} onCancel={onCancel} />
+      <ActionButtons onInsert={onInsert} onCancel={onCancel} onClear={onClear} />
     </div>
   );
 }
