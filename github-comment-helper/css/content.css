@@ -96,20 +96,6 @@
   background-color: var(--color-success-hover);
 }
 
-.gh-label-selector {
-  flex-shrink: 1;
-  overflow-y: scroll;
-}
-
-.gh-label-selector h4 {
-  padding: 4px 8px;
-  font-size: 14px;
-  color: var(--color-text);
-  background-color: var(--color-bg-light);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
 .gh-label-group-container {
   padding: 0 12px;
   margin-bottom: 8px;

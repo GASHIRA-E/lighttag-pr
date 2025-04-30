@@ -4,6 +4,7 @@ import { LabelSelector } from "./LabelSelector";
 import { ActionButtons } from "./ActionButtons";
 import type { DisplayMode } from "../utils/content/storage";
 import { saveDisplayMode } from "../utils/content/storage";
+import { LabelModalHeader } from "./LabelModalHeader";
 
 interface LabelModalProps {
   isOpen: boolean;
@@ -39,37 +40,10 @@ export function LabelModal({
 
   return (
     <div className="gh-label-modal">
-      <div className="gh-label-modal-header">
-        <div>
-          <p className="gh-label-modal-title">ラベルを選択</p>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <p className="gh-label-display-mode">
-            現在の表示モード:{" "}
-            <span className={`gh-label-display-mode-${displayMode}`}>
-              {displayMode === "pro" ? "Pro" : "Normal"}
-            </span>
-          </p>
-          <button
-            className="gh-mode-toggle-btn"
-            onClick={toggleDisplayMode}
-            type="button"
-            title={
-              displayMode === "pro"
-                ? "チェックボックス表示に切り替え"
-                : "シンプル表示に切り替え"
-            }
-          >
-            モード切り替え
-          </button>
-        </div>
-      </div>
+      <LabelModalHeader
+        displayMode={displayMode}
+        toggleDisplayMode={toggleDisplayMode}
+      />
 
       <LabelSelector
         labelsConfig={labelsConfig}
@@ -78,7 +52,11 @@ export function LabelModal({
         displayMode={displayMode}
       />
 
-      <ActionButtons onInsert={onInsert} onCancel={onCancel} onClear={onClear} />
+      <ActionButtons
+        onInsert={onInsert}
+        onCancel={onCancel}
+        onClear={onClear}
+      />
     </div>
   );
 }
