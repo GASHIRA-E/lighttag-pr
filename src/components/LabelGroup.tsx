@@ -17,8 +17,15 @@ export function LabelGroup({
   displayMode,
 }: LabelGroupProps): React.JSX.Element {
   return (
-    <div className="gh-label-group-container">
-      <h4>{group.type}</h4>
+    <div>
+      <h4
+        style={{
+          position: "sticky",
+          top: "0",
+        }}
+      >
+        {group.type}
+      </h4>
       <div className="gh-label-group">
         {group.items.map((item, index) => {
           const isSelected = selectedLabels.some(

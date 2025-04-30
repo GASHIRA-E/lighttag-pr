@@ -39,18 +39,20 @@ export function LabelItem({
 
   // normalモード：チェックボックスと説明文表示
   return (
-    <label className="gh-label-item-normal" htmlFor={`label-checkbox-${label}`}>
-      <div className="gh-label-checkbox-container">
-        <input
-          type="checkbox"
-          id={`label-checkbox-${label}`}
-          checked={isSelected}
-          onChange={onClick}
-          className="gh-label-checkbox"
-        />
+    <label
+      className={`gh-label-item-normal ${isSelected ? "selected" : ""}`}
+      htmlFor={`label-checkbox-${label}`}
+    >
+      <input
+        type="checkbox"
+        id={`label-checkbox-${label}`}
+        checked={isSelected}
+        onChange={onClick}
+      />
+      <div className="gh-label-content">
         <span className="gh-label-name">{label}</span>
+        <div className="gh-label-description">{description}</div>
       </div>
-      <div className="gh-label-description">{description}</div>
     </label>
   );
 }

@@ -97,19 +97,26 @@
 }
 
 .gh-label-selector {
-  padding: 12px;
   flex-shrink: 1;
   overflow-y: scroll;
 }
 
 .gh-label-selector h4 {
-  margin: 0 0 8px 0;
+  padding: 4px 8px;
   font-size: 14px;
   color: var(--color-text);
+  background-color: var(--color-bg-light);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gh-label-group-container {
+  padding: 0 12px;
+  margin-bottom: 8px;
 }
 
 .gh-label-group {
-  margin-bottom: 12px;
+  padding: 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -124,6 +131,7 @@
   font-size: 12px;
   cursor: pointer;
   background-color: var(--color-bg-light);
+  color: var(--color-text);
 }
 
 .gh-label-item:hover {
@@ -133,11 +141,16 @@
 .gh-label-item.selected {
   background-color: var(--color-selected-bg);
   border-color: var(--color-selected-border);
+  color: var(--color-text-secondary);
 }
 
 /* Normal モードのラベル表示 */
 .gh-label-item-normal {
   width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
   background-color: var(--color-bg-light);
   border: 1px solid var(--color-border);
   color: var(--color-text);
@@ -150,25 +163,21 @@
   background-color: var(--color-bg-light-hover);
 }
 
-.gh-label-checkbox-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 4px;
-}
-
-.gh-label-checkbox {
-  margin-right: 8px;
-  background-color: var(--color-white);
+.gh-label-item-normal.selected {
+  background-color: var(--color-selected-bg);
+  border-color: var(--color-selected-border);
 }
 
 .gh-label-name {
+  font-size: 14px;
   font-weight: bold;
 }
 
 .gh-label-description {
+  margin-top: 4px;
   font-size: 12px;
+  font-weight: normal;
   color: var(--color-text-secondary);
-  padding-left: 24px;
 }
 
 .gh-label-btn-group {
