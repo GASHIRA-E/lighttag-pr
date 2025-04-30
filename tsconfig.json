@@ -9,7 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "github-comment-helper/js",
     "rootDir": "src",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
