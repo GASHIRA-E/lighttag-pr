@@ -74,7 +74,7 @@ export function CommentHelperApp({
   };
 
   return (
-    <div className="gh-label-helper">
+    <div>
       <LabelButton onClick={toggleSelector} />
 
       <LabelModal
