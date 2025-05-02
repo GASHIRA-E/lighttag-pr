@@ -9,12 +9,13 @@ export default defineConfig({
     }),
   ],
   build: {
-    outDir: "github-comment-helper/js",
+    outDir: "lighttag-pr/js",
     emptyOutDir: false,
     rollupOptions: {
       input: {
         content: resolve(__dirname, "src/content.tsx"),
         options: resolve(__dirname, "src/options.ts"),
+        popup: resolve(__dirname, "src/popup.ts"),
       },
       output: {
         entryFileNames: "[name].js",

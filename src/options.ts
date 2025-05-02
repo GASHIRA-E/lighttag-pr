@@ -3,17 +3,17 @@ import type { LabelsConfig, LabelItem } from "./types";
 
 // DOM要素
 const labelGroupsContainer = document.getElementById(
-  "labelGroups",
+  "labelGroups"
 ) as HTMLDivElement;
 const addGroupBtn = document.getElementById("addGroupBtn") as HTMLButtonElement;
 const configJsonTextarea = document.getElementById(
-  "configJson",
+  "configJson"
 ) as HTMLTextAreaElement;
 const exportBtn = document.getElementById("exportBtn") as HTMLButtonElement;
 const importBtn = document.getElementById("importBtn") as HTMLButtonElement;
 const saveBtn = document.getElementById("saveBtn") as HTMLButtonElement;
 const statusMessage = document.getElementById(
-  "statusMessage",
+  "statusMessage"
 ) as HTMLDivElement;
 
 // ラベル設定データ
@@ -44,15 +44,16 @@ function loadConfig(): void {
           {
             type: "観点",
             items: [
-              { label: "設計", description: "設計や仕様に合致しているか" },
-              { label: "テスト", description: "テストが十分か" },
+              { label: "設計", description: "設計や仕様に合っているか" },
+              { label: "可読性", description: "コードが読みやすいか" },
             ],
           },
           {
             type: "温度感",
             items: [
-              { label: "FYI", description: "参考情報の共有" },
-              { label: "Q", description: "質問" },
+              { label: "要修正", description: "修正が必要な指摘" },
+              { label: "Q", description: "質問・確認" },
+              { label: "FYI", description: "参考情報（対応不要）" },
             ],
           },
         ],
@@ -129,7 +130,7 @@ function renderLabelGroups(): void {
 function createLabelItemElement(
   groupIndex: number,
   itemIndex: number,
-  item: LabelItem,
+  item: LabelItem
 ): HTMLDivElement {
   const itemElem = document.createElement("div");
   itemElem.className = "label-item";
@@ -197,7 +198,11 @@ function importConfig(): void {
 
     labelsConfig = newConfig as LabelsConfig;
     renderLabelGroups();
-    showStatus("設定をインポートしました", "success");
+    
+    // インポート成功時に自動保存
+    chrome.storage.local.set({ labelsConfig }, () => {
+      showStatus("設定をインポートして保存しました", "success");
+    });
   } catch (error) {
     if (error instanceof Error) {
       showStatus(`エラー: ${error.message}`, "error");
