@@ -1,7 +1,7 @@
 {
-  "name": "github-comment-helper",
+  "name": "lighttag-pr",
   "version": "1.0.0",
-  "description": "GitHub Comment Helper Extension",
+  "description": "LightTag PR Extension",
   "scripts": {
     "build": "vite build",
     "watch": "vite build --watch",

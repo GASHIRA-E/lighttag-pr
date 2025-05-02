@@ -1,4 +1,4 @@
-# GitHub Comment Helper
+# LightTag PR
 
 GitHubのプルリクエストコメントに「観点ラベル」や「温度感ラベル」などのラベルを簡単に挿入できるChrome拡張機能です。
 JSONで設定をImport,Exportできるので、チーム内で設定を共有することでコードレビューの質と効率を向上させます。
@@ -16,7 +16,7 @@ JSONで設定をImport,Exportできるので、チーム内で設定を共有す
 
 1. このリポジトリをクローン
    ```
-   git clone https://github.com/ユーザー名/github-comment-helper.git
+   git clone https://github.com/ユーザー名/lighttag-pr.git
    ```
 
 2. 依存パッケージをインストール
@@ -33,7 +33,7 @@ JSONで設定をImport,Exportできるので、チーム内で設定を共有す
    - Chromeで `chrome://extensions` を開く
    - 「デベロッパーモード」を有効にする
    - 「パッケージ化されていない拡張機能を読み込む」をクリック
-   - `github-comment-helper/github-comment-helper` フォルダを選択
+   - `lighttag-pr/lighttag-pr` フォルダを選択
 
 ### Chrome Web Storeからインストール
 

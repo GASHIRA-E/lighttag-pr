@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "GitHub Comment Helper",
+  "name": "LightTag PR",
   "version": "1.0.0",
   "description": "GitHubのPRコメントにラベルを挿入するツール",
   "icons": {
