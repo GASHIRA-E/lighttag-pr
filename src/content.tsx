@@ -1,10 +1,10 @@
 // GitHubコメントヘルパー コンテンツスクリプト
 // メインエントリーポイント
 import { createRoot } from "react-dom/client";
-import { loadLabelsConfig } from "./utils/content/storage";
-import { createObserver } from "./utils/content/dom-observer";
-import { CommentHelperApp } from "./components/CommentHelperApp";
-import type { LabelsConfig } from "./types";
+import { loadLabelsConfig } from "@/utils/content/storage";
+import { createObserver } from "@/utils/content/dom-observer";
+import { CommentHelperApp } from "@/components/domain/content/CommentHelperApp";
+import type { LabelsConfig } from "@/types";
 
 // 拡張機能の初期化
 async function initializeExtension(): Promise<void> {

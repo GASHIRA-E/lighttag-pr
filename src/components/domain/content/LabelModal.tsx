@@ -1,10 +1,10 @@
 import type React from "react";
-import type { LabelsConfig, SelectedLabel } from "../types";
+import type { LabelsConfig, SelectedLabel } from "@/types";
 import { LabelSelector } from "./LabelSelector";
 import { ActionButtons } from "./ActionButtons";
-import type { DisplayMode } from "../utils/content/storage";
-import { saveDisplayMode } from "../utils/content/storage";
-import { LabelModalHeader } from "./LabelModalHeader";
+import type { DisplayMode } from "@/utils/content/storage";
+import { saveDisplayMode } from "@/utils/content/storage";
+import { LabelModalHeader } from "@/components/LabelModalHeader";
 
 interface LabelModalProps {
   isOpen: boolean;

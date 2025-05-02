@@ -1,10 +1,10 @@
 import type React from "react";
 import { useState, useEffect } from "react";
-import type { LabelsConfig, SelectedLabel } from "../types";
-import { LabelButton } from "./LabelButton";
-import { addLabelToTextarea } from "../utils/content/labels";
-import { getDisplayMode, type DisplayMode } from "../utils/content/storage";
-import { LabelModal } from "./LabelModal";
+import type { LabelsConfig, SelectedLabel } from "@/types";
+import { LabelButton } from "@/components/domain/content/LabelButton";
+import { addLabelToTextarea } from "@/utils/content/labels";
+import { getDisplayMode, type DisplayMode } from "@/utils/content/storage";
+import { LabelModal } from "@/components/domain/content/LabelModal";
 
 interface CommentHelperAppProps {
   commentField: HTMLTextAreaElement;

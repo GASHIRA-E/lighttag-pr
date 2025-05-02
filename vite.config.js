@@ -8,6 +8,11 @@ export default defineConfig({
       jsxImportSource: "@emotion/react",
     }),
   ],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src"),
+    },
+  },
   build: {
     outDir: "lighttag-pr/js",
     emptyOutDir: false,

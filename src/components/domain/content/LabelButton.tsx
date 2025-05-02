@@ -1,4 +1,5 @@
 import type React from "react";
+import { Button } from "@/components/parts/Button";
 
 interface LabelButtonProps {
   onClick: () => void;
@@ -6,7 +7,7 @@ interface LabelButtonProps {
 
 export function LabelButton({ onClick }: LabelButtonProps): React.JSX.Element {
   return (
-    <button
+    <Button
       type="button"
       className="Button Button--secondary Button--small"
       onClick={(e) => {
@@ -15,6 +16,6 @@ export function LabelButton({ onClick }: LabelButtonProps): React.JSX.Element {
       }}
     >
       ラベルを追加
-    </button>
+    </Button>
   );
 }
