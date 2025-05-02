@@ -1,5 +1,6 @@
 import type React from "react";
-import type { DisplayMode } from "../utils/content/storage";
+import type { DisplayMode } from "@/utils/content/storage";
+import { Button } from "@/components/parts/Button"
 
 interface LabelModalHeaderProps {
   displayMode: DisplayMode;
@@ -28,10 +29,10 @@ export function LabelModalHeader({
             {displayMode === "pro" ? "Pro" : "Normal"}
           </span>
         </p>
-        <button
-          className="gh-mode-toggle-btn"
+        <Button
           onClick={toggleDisplayMode}
           type="button"
+          size="small"
           title={
             displayMode === "pro"
               ? "チェックボックス表示に切り替え"
@@ -39,7 +40,7 @@ export function LabelModalHeader({
           }
         >
           モード切り替え
-        </button>
+        </Button>
       </div>
     </div>
   );

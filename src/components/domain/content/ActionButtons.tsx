@@ -1,5 +1,6 @@
 import type React from "react";
 import { Button } from "@/components/parts/Button";
+import { css } from "@emotion/react";
 
 interface ActionButtonsProps {
   onInsert: () => void;
@@ -7,20 +8,28 @@ interface ActionButtonsProps {
   onClear: () => void;
 }
 
+const buttonGroupStyles = css`
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  background-color: var(--color-bg-light);
+  padding: 8px 12px 12px;
+`;
+
 export function ActionButtons({
   onInsert,
   onCancel,
   onClear,
 }: ActionButtonsProps): React.JSX.Element {
   return (
-    <div className="gh-label-btn-group">
-      <Button onClick={onInsert} className="gh-label-insert-btn">
+    <div css={buttonGroupStyles}>
+      <Button variant="primary" onClick={onInsert}>
         挿入
       </Button>
-      <Button onClick={onClear} className="gh-label-clear-btn">
+      <Button variant="warning" onClick={onClear}>
         クリア
       </Button>
-      <Button onClick={onCancel} className="gh-label-cancel-btn">
+      <Button variant="secondary" onClick={onCancel}>
         キャンセル
       </Button>
     </div>
