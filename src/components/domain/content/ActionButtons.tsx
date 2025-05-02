@@ -1,4 +1,5 @@
 import type React from "react";
+import { Button } from "@/components/parts/Button";
 
 interface ActionButtonsProps {
   onInsert: () => void;
@@ -13,15 +14,15 @@ export function ActionButtons({
 }: ActionButtonsProps): React.JSX.Element {
   return (
     <div className="gh-label-btn-group">
-      <button type="button" className="gh-label-insert-btn" onClick={onInsert}>
+      <Button onClick={onInsert} className="gh-label-insert-btn">
         挿入
-      </button>
-      <button type="button" className="gh-label-clear-btn" onClick={onClear}>
+      </Button>
+      <Button onClick={onClear} className="gh-label-clear-btn">
         クリア
-      </button>
-      <button type="button" className="gh-label-cancel-btn" onClick={onCancel}>
+      </Button>
+      <Button onClick={onCancel} className="gh-label-cancel-btn">
         キャンセル
-      </button>
+      </Button>
     </div>
   );
 }

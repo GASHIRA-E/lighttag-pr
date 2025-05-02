@@ -4,6 +4,7 @@ import { LabelSelector } from "@/components/domain/content/LabelSelector";
 import { ActionButtons } from "@/components/domain/content/ActionButtons";
 import type { DisplayMode } from "@/utils/content/storage";
 import { saveDisplayMode } from "@/utils/content/storage";
+import { Button } from "@/components/parts/Button";
 
 interface LabelModalProps {
   isOpen: boolean;
@@ -56,7 +57,7 @@ export function LabelModal({
               {displayMode === "pro" ? "Pro" : "Normal"}
             </span>
           </p>
-          <button
+          <Button
             className="gh-mode-toggle-btn"
             onClick={toggleDisplayMode}
             type="button"
@@ -67,7 +68,7 @@ export function LabelModal({
             }
           >
             モード切り替え
-          </button>
+          </Button>
         </div>
       </div>
 
