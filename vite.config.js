@@ -5,12 +5,13 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "github-comment-helper/js",
+    outDir: "lighttag-pr/js",
     emptyOutDir: false,
     rollupOptions: {
       input: {
         content: resolve(__dirname, "src/content.tsx"),
         options: resolve(__dirname, "src/options.ts"),
+        popup: resolve(__dirname, "src/popup.tsx"),
       },
       output: {
         entryFileNames: "[name].js",
