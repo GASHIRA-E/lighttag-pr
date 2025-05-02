@@ -1,5 +1,5 @@
 import type React from "react";
-import type { DisplayMode } from "../utils/content/storage";
+import type { DisplayMode } from "@/utils/content/storage";
 
 interface LabelItemProps {
   label: string;
