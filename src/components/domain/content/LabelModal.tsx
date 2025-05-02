@@ -4,7 +4,7 @@ import { LabelSelector } from "./LabelSelector";
 import { ActionButtons } from "./ActionButtons";
 import type { DisplayMode } from "@/utils/content/storage";
 import { saveDisplayMode } from "@/utils/content/storage";
-import { LabelModalHeader } from "@/components/LabelModalHeader";
+import { LabelModalHeader } from "@/components/domain/content/LabelModalHeader";
 
 interface LabelModalProps {
   isOpen: boolean;
