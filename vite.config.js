@@ -11,7 +11,7 @@ export default defineConfig({
       input: {
         content: resolve(__dirname, "src/content.tsx"),
         options: resolve(__dirname, "src/options.ts"),
-        popup: resolve(__dirname, "src/popup.tsx"),
+        popup: resolve(__dirname, "src/popup.ts"),
       },
       output: {
         entryFileNames: "[name].js",
