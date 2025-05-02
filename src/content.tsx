@@ -6,6 +6,12 @@ import { createObserver } from "@/utils/content/dom-observer";
 import { CommentHelperApp } from "@/components/domain/content/CommentHelperApp";
 import type { LabelsConfig } from "@/types";
 
+// 現在のURLがGitHubのPRのfilesタブかどうかをチェック
+function isPullRequestFilesTab(): boolean {
+  const url = window.location.href;
+  return /https:\/\/github\.com\/.*\/pull\/\d+\/files/.test(url);
+}
+
 // 拡張機能の初期化
 async function initializeExtension(): Promise<void> {
   // ラベル設定を読み込み
@@ -20,6 +26,11 @@ async function initializeExtension(): Promise<void> {
 
 // Reactコンポーネントをコメント入力欄にマウント
 function mountReactComponents(labelsConfig: LabelsConfig): void {
+  // 現在のURLがPRのfilesタブでない場合は何もしない
+  if (!isPullRequestFilesTab()) {
+    return;
+  }
+
   // GitHub PR画面のテキストエリアのコンテナを特定
   const commentForm = document.querySelectorAll<HTMLFormElement>(
     ".js-previewable-comment-form",
