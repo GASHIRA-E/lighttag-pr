@@ -21,20 +21,23 @@ async function initializeExtension(): Promise<void> {
 // Reactコンポーネントをコメント入力欄にマウント
 function mountReactComponents(labelsConfig: LabelsConfig): void {
   // GitHub PR画面のテキストエリアのコンテナを特定
-  const commentForm = document.querySelectorAll<HTMLTextAreaElement>(
+  const commentForm = document.querySelectorAll<HTMLFormElement>(
     ".js-previewable-comment-form",
   );
 
-  // テキストエリア要素を取得
-  const commentFields =
-    document.querySelectorAll<HTMLTextAreaElement>(".js-comment-field");
-
-  if (commentForm.length === 0 || commentFields.length === 0) return;
+  if (commentForm.length === 0) return;
 
   // 各入力欄にReactコンポーネントを追加
   for (const form of commentForm) {
     // すでにマウントされている場合はスキップ
     if (form.dataset.labelHelperInitialized) continue;
+
+    // フォーム内のテキストエリアを取得
+    const commentField =
+      form.querySelector<HTMLTextAreaElement>(".js-comment-field");
+
+    // テキストエリアが見つからない場合はスキップ
+    if (!commentField) continue;
 
     // 初期化済みマークを付ける
     form.dataset.labelHelperInitialized = "true";
@@ -50,7 +53,7 @@ function mountReactComponents(labelsConfig: LabelsConfig): void {
     const root = createRoot(helperContainer);
     root.render(
       <CommentHelperApp
-        commentField={commentFields[0]}
+        commentField={commentField}
         labelsConfig={labelsConfig}
       />,
     );
