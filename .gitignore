@@ -2,7 +2,7 @@
 node_modules/
 
 # ビルドファイル
-github-comment-helper/js/*
+lighttag-pr/js/*
 
 # ログファイル
 *.log
