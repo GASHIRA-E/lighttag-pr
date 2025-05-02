@@ -1,7 +1,7 @@
 import type React from "react";
 import type { LabelsConfig, SelectedLabel } from "@/types";
-import { LabelSelector } from "@/components/LabelSelector";
-import { ActionButtons } from "@/components/ActionButtons";
+import { LabelSelector } from "@/components/domain/content/LabelSelector";
+import { ActionButtons } from "@/components/domain/content/ActionButtons";
 import type { DisplayMode } from "@/utils/content/storage";
 import { saveDisplayMode } from "@/utils/content/storage";
 
@@ -78,7 +78,11 @@ export function LabelModal({
         displayMode={displayMode}
       />
 
-      <ActionButtons onInsert={onInsert} onCancel={onCancel} onClear={onClear} />
+      <ActionButtons
+        onInsert={onInsert}
+        onCancel={onCancel}
+        onClear={onClear}
+      />
     </div>
   );
 }

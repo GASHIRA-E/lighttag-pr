@@ -1,6 +1,6 @@
 import type React from "react";
 import type { LabelsConfig, SelectedLabel } from "@/types";
-import { LabelGroup } from "@/components/LabelGroup";
+import { LabelGroup } from "@/components/domain/content/LabelGroup";
 import type { DisplayMode } from "@/utils/content/storage";
 
 interface LabelSelectorProps {
