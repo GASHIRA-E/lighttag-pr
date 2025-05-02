@@ -198,7 +198,11 @@ function importConfig(): void {
 
     labelsConfig = newConfig as LabelsConfig;
     renderLabelGroups();
-    showStatus("設定をインポートしました", "success");
+    
+    // インポート成功時に自動保存
+    chrome.storage.local.set({ labelsConfig }, () => {
+      showStatus("設定をインポートして保存しました", "success");
+    });
   } catch (error) {
     if (error instanceof Error) {
       showStatus(`エラー: ${error.message}`, "error");
