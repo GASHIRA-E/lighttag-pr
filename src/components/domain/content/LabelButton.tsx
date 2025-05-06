@@ -9,7 +9,8 @@ export function LabelButton({ onClick }: LabelButtonProps): React.JSX.Element {
   return (
     <Button
       type="button"
-      className="Button Button--secondary Button--small"
+      variant="secondary"
+      size="small"
       onClick={(e) => {
         e.preventDefault();
         onClick();

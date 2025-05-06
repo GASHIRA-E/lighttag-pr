@@ -10,6 +10,7 @@
     "outDir": "github-comment-helper/js",
     "rootDir": "src",
     "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

@@ -1,10 +1,10 @@
 import type React from "react";
 import type { LabelsConfig, SelectedLabel } from "@/types";
-import { LabelSelector } from "@/components/domain/content/LabelSelector";
-import { ActionButtons } from "@/components/domain/content/ActionButtons";
+import { LabelSelector } from "./LabelSelector";
+import { ActionButtons } from "./ActionButtons";
 import type { DisplayMode } from "@/utils/content/storage";
 import { saveDisplayMode } from "@/utils/content/storage";
-import { Button } from "@/components/parts/Button";
+import { LabelModalHeader } from "@/components/domain/content/LabelModalHeader";
 
 interface LabelModalProps {
   isOpen: boolean;
@@ -40,37 +40,10 @@ export function LabelModal({
 
   return (
     <div className="gh-label-modal">
-      <div className="gh-label-modal-header">
-        <div>
-          <p className="gh-label-modal-title">ラベルを選択</p>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <p className="gh-label-display-mode">
-            現在の表示モード:{" "}
-            <span className={`gh-label-display-mode-${displayMode}`}>
-              {displayMode === "pro" ? "Pro" : "Normal"}
-            </span>
-          </p>
-          <Button
-            className="gh-mode-toggle-btn"
-            onClick={toggleDisplayMode}
-            type="button"
-            title={
-              displayMode === "pro"
-                ? "チェックボックス表示に切り替え"
-                : "シンプル表示に切り替え"
-            }
-          >
-            モード切り替え
-          </Button>
-        </div>
-      </div>
+      <LabelModalHeader
+        displayMode={displayMode}
+        toggleDisplayMode={toggleDisplayMode}
+      />
 
       <LabelSelector
         labelsConfig={labelsConfig}
