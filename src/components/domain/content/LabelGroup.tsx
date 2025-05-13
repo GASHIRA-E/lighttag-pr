@@ -22,6 +22,13 @@ const labelGroupHeaderStyles = css`
   top: 0;
 `;
 
+const labelGroupStyles = css`
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
 export function LabelGroup({
   group,
   selectedLabels,
@@ -31,7 +38,7 @@ export function LabelGroup({
   return (
     <div>
       <h4 css={labelGroupHeaderStyles}>{group.type}</h4>
-      <div className="gh-label-group">
+      <div css={labelGroupStyles}>
         {group.items.map((item, index) => {
           const isSelected = selectedLabels.some(
             (l) => l.label === item.label && l.type === group.type,
