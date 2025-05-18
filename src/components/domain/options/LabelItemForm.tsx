@@ -1,7 +1,7 @@
 import type React from "react";
-import { css } from "@emotion/react";
 import type { LabelItem } from "@/types";
-import { Button } from "../../parts/Button";
+import { css } from "@emotion/react";
+import { Button } from "@/components/parts/Button";
 
 interface LabelItemFormProps {
   /**

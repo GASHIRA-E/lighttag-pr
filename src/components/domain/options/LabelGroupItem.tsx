@@ -1,8 +1,8 @@
 import type React from "react";
-import { css } from "@emotion/react";
 import type { LabelGroup, LabelItem } from "@/types";
-import { Button } from "../../parts/Button";
-import { LabelItemForm } from "./LabelItemForm";
+import { css } from "@emotion/react";
+import { Button } from "@/components/parts/Button";
+import { LabelItemForm } from "@/components/domain/options/LabelItemForm";
 
 interface LabelGroupItemProps {
   /**

@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
 import type React from "react";
+import type { LabelsConfig, LabelItem } from "@/types";
+import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import type { LabelsConfig, LabelItem, LabelGroup } from "@/types";
-import { Button } from "../../parts/Button";
-import { LabelItemForm } from "./LabelItemForm";
-import { LabelGroupItem } from "./LabelGroupItem";
-import { ConfigImportExport } from "./ConfigImportExport";
+import { Button } from "@/components/parts/Button";
+import { LabelGroupItem } from "@/components/domain/options/LabelGroupItem";
+import { ConfigImportExport } from "@/components/domain/options/ConfigImportExport";
 
 // ステータス表示用の型
 type StatusType = "success" | "error" | null;

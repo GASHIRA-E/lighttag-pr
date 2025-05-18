@@ -1,6 +1,6 @@
 import type React from "react";
 import { css } from "@emotion/react";
-import { Button } from "../../parts/Button";
+import { Button } from "@/components/parts/Button";
 
 interface ConfigImportExportProps {
   /**

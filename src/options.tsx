@@ -1,7 +1,6 @@
 // GitHub Comment Helper オプション画面スクリプト
-import React from "react";
 import { createRoot } from "react-dom/client";
-import { OptionsApp } from "./components/domain/options/OptionsApp";
+import { OptionsApp } from "@/components/domain/options/OptionsApp";
 
 // アプリケーションのレンダリング
 document.addEventListener("DOMContentLoaded", () => {
