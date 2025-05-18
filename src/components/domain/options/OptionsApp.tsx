@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type React from "react";
+import { css } from "@emotion/react";
 import type { LabelsConfig, LabelItem, LabelGroup } from "@/types";
 import { Button } from "../../parts/Button";
 import { LabelItemForm } from "./LabelItemForm";
@@ -8,6 +9,46 @@ import { ConfigImportExport } from "./ConfigImportExport";
 
 // ステータス表示用の型
 type StatusType = "success" | "error" | null;
+
+// スタイル定義
+const containerStyle = css`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const headingStyle = css`
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+const sectionStyle = css`
+  margin-bottom: 30px;
+`;
+
+const actionButtonsStyle = css`
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+`;
+
+const statusMessageStyle = css`
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+`;
+
+const successStyle = css`
+  background-color: #dafbe1;
+  color: #116329;
+`;
+
+const errorStyle = css`
+  background-color: #ffebe9;
+  color: #cf222e;
+`;
 
 export const OptionsApp: React.FC = () => {
   const [labelsConfig, setLabelsConfig] = useState<LabelsConfig>({ labels: [] });
@@ -162,10 +203,10 @@ export const OptionsApp: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>LightTag PR オプション</h1>
+    <div css={containerStyle}>
+      <h1 css={headingStyle}>LightTag PR オプション</h1>
 
-      <div className="section">
+      <div css={sectionStyle}>
         <h2>ラベル設定</h2>
         <div id="labelGroups">
           {labelsConfig.labels.map((group, groupIndex) => (
@@ -196,7 +237,7 @@ export const OptionsApp: React.FC = () => {
         onImport={importConfig}
       />
 
-      <div className="action-btns">
+      <div css={actionButtonsStyle}>
         <Button
           variant="primary"
           onClick={saveConfig}
@@ -206,7 +247,7 @@ export const OptionsApp: React.FC = () => {
       </div>
 
       {status.type && (
-        <div className={`status-message ${status.type}`}>
+        <div css={[statusMessageStyle, status.type === 'success' ? successStyle : errorStyle]}>
           {status.message}
         </div>
       )}

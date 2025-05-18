@@ -1,4 +1,5 @@
 import type React from "react";
+import { css } from "@emotion/react";
 import type { LabelGroup, LabelItem } from "@/types";
 import { Button } from "../../parts/Button";
 import { LabelItemForm } from "./LabelItemForm";
@@ -34,6 +35,31 @@ interface LabelGroupItemProps {
   onDeleteLabelItem: (groupIndex: number, itemIndex: number) => void;
 }
 
+// スタイル定義
+const labelGroupStyle = css`
+  margin-bottom: 20px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 15px;
+`;
+
+const labelGroupHeaderStyle = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+const labelItemsStyle = css`
+  margin-top: 10px;
+`;
+
+const inputStyle = css`
+  padding: 5px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+`;
+
 /**
  * ラベルグループのコンポーネント
  */
@@ -50,12 +76,13 @@ export const LabelGroupItem: React.FC<LabelGroupItemProps> = ({
     return `labelItem-${groupIndex}-${itemIndex}`;
   };
   return (
-    <div className="label-group">
-      <div className="label-group-header">
+    <div css={labelGroupStyle}>
+      <div css={labelGroupHeaderStyle}>
         <input
           type="text"
           value={group.type}
           placeholder="グループ名"
+          css={inputStyle}
           onChange={(e) => onUpdateGroupType(groupIndex, e.target.value)}
         />
         <Button
@@ -67,7 +94,7 @@ export const LabelGroupItem: React.FC<LabelGroupItemProps> = ({
         </Button>
       </div>
 
-      <div className="label-items">
+      <div css={labelItemsStyle}>
         {group.items.map((item, itemIndex) => (
           <LabelItemForm
             key={generateItemKey(itemIndex)}

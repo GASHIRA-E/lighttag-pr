@@ -1,4 +1,5 @@
 import type React from "react";
+import { css } from "@emotion/react";
 import { Button } from "../../parts/Button";
 
 interface ConfigImportExportProps {
@@ -20,6 +21,31 @@ interface ConfigImportExportProps {
   onImport: () => void;
 }
 
+// スタイル定義
+const sectionStyle = css`
+  margin-bottom: 30px;
+`;
+
+const importExportStyle = css`
+  margin-top: 30px;
+`;
+
+const textareaStyle = css`
+  width: 100%;
+  height: 200px;
+  font-family: monospace;
+  padding: 10px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  margin-bottom: 10px;
+`;
+
+const actionBtnsStyle = css`
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+`;
+
 /**
  * 設定のインポート/エクスポートコンポーネント
  */
@@ -30,15 +56,16 @@ export const ConfigImportExport: React.FC<ConfigImportExportProps> = ({
   onImport
 }) => {
   return (
-    <div className="section import-export">
+    <div css={[sectionStyle, importExportStyle]}>
       <h2>設定のインポート/エクスポート</h2>
       <textarea
         id="configJson"
         placeholder="JSONをペーストするか、現在の設定をエクスポートします"
         value={configJson}
+        css={textareaStyle}
         onChange={(e) => onConfigJsonChange(e.target.value)}
       />
-      <div className="action-btns">
+      <div css={actionBtnsStyle}>
         <Button
           variant="secondary"
           onClick={onExport}

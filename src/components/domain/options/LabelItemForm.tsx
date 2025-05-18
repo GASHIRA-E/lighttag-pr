@@ -1,4 +1,5 @@
 import type React from "react";
+import { css } from "@emotion/react";
 import type { LabelItem } from "@/types";
 import { Button } from "../../parts/Button";
 
@@ -25,6 +26,27 @@ interface LabelItemFormProps {
   onDeleteLabelItem: (groupIndex: number, itemIndex: number) => void;
 }
 
+// スタイル定義
+const labelItemStyle = css`
+  display: flex;
+  margin-bottom: 10px;
+  gap: 10px;
+`;
+
+const inputBaseStyle = css`
+  padding: 5px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+`;
+
+const labelNameStyle = css`
+  width: 120px;
+`;
+
+const labelDescriptionStyle = css`
+  flex: 1;
+`;
+
 /**
  * ラベルアイテムのフォームコンポーネント
  */
@@ -36,10 +58,10 @@ export const LabelItemForm: React.FC<LabelItemFormProps> = ({
   onDeleteLabelItem,
 }) => {
   return (
-    <div className="label-item">
+    <div css={labelItemStyle}>
       <input
         type="text"
-        className="label-name"
+        css={[inputBaseStyle, labelNameStyle]}
         value={item.label}
         placeholder="ラベル名"
         onChange={(e) =>
@@ -48,7 +70,7 @@ export const LabelItemForm: React.FC<LabelItemFormProps> = ({
       />
       <input
         type="text"
-        className="label-description"
+        css={[inputBaseStyle, labelDescriptionStyle]}
         value={item.description}
         placeholder="説明"
         onChange={(e) =>
