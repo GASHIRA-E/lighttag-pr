@@ -43,6 +43,10 @@ const labelNameStyle = css`
   width: 120px;
 `;
 
+const labelBadgeStyleStyle = css`
+  width: 80px;
+`;
+
 const labelDescriptionStyle = css`
   flex: 1;
 `;
@@ -66,6 +70,15 @@ export const LabelItemForm: React.FC<LabelItemFormProps> = ({
         placeholder="ラベル名"
         onChange={(e) =>
           onUpdateLabelItem(groupIndex, itemIndex, "label", e.target.value)
+        }
+      />
+      <input
+        type="text"
+        placeholder="バッジ色"
+        css={[inputBaseStyle, labelBadgeStyleStyle]}
+        value={item.badgeStyle}
+        onChange={(e) =>
+          onUpdateLabelItem(groupIndex, itemIndex, "badgeStyle", e.target.value)
         }
       />
       <input
