@@ -16,7 +16,7 @@
     "lint:fix": "biome check --apply .",
     "format": "biome format .",
     "format:fix": "biome format --write .",
-    "docs": "concurrently \"npm run docs\" \"npm run docs:watch\"",
+    "docs": "concurrently \"npm run docs:server\" \"npm run docs:watch\"",
     "docs:server": "http-server ./docs -p 8080 -o",
     "docs:watch": "ejsc template/index.ejs --out docs --watch",
     "docs:build": "ejsc template/index.ejs --out docs/index.html"
