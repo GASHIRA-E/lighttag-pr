@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "LightTag PR Extension",
   "scripts": {
-    "build": "vite build",
-    "watch": "vite build --watch",
+    "build:content": "vite build --config vite.content.config.js",
+    "build:options": "vite build --config vite.options.config.js",
+    "build:popup": "vite build --config vite.popup.config.js",
+    "build": "concurrently \"npm run build:content\" \"npm run build:options\" \"npm run build:popup\"",
+    "create-publish": "npm run build && zip -r publish/lighttag-pr-$(date \"+%Y-%m-%d-%H-%M-%S\").zip ./lighttag-pr",
     "dev:content": "vite build --watch --config vite.content.config.js",
     "dev:options": "vite build --watch --config vite.options.config.js",
     "dev:popup": "vite build --watch --config vite.popup.config.js",
