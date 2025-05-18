@@ -3,6 +3,7 @@
 export interface LabelItem {
   label: string;
   description: string;
+  badgeStyle?: string;
 }
 
 export interface LabelGroup {
@@ -17,4 +18,5 @@ export interface LabelsConfig {
 export interface SelectedLabel {
   label: string;
   type: string;
+  badgeStyle: string;
 }

@@ -34,22 +34,23 @@ export function CommentHelperApp({
   };
 
   // ラベルの選択状態を切り替え
-  const toggleLabel = (label: string, type: string): void => {
-    const index = selectedLabels.findIndex(
-      (l) => l.label === label && l.type === type,
-    );
+  const toggleLabel: React.ComponentProps<typeof LabelModal>["onLabelClick"]
+    = (label, type, badgeStyle) => {
+      const index = selectedLabels.findIndex(
+        (l) => l.label === label && l.type === type,
+      );
 
-    if (index >= 0) {
-      // 選択解除
-      setSelectedLabels([
-        ...selectedLabels.slice(0, index),
-        ...selectedLabels.slice(index + 1),
-      ]);
-    } else {
-      // 選択追加
-      setSelectedLabels([...selectedLabels, { label, type }]);
-    }
-  };
+      if (index >= 0) {
+        // 選択解除
+        setSelectedLabels([
+          ...selectedLabels.slice(0, index),
+          ...selectedLabels.slice(index + 1),
+        ]);
+      } else {
+        // 選択追加
+        setSelectedLabels([...selectedLabels, { label, type, badgeStyle }]);
+      }
+    };
 
   // 選択したラベルをクリア
   const handleClearLabels = (): void => {
@@ -80,11 +81,8 @@ export function CommentHelperApp({
       return findLabelIndex(a.label, a.type) - findLabelIndex(b.label, b.type);
     });
 
-    // 並べ替えた後のラベルテキストのみの配列を作成
-    const labelTextsOnly = sortedLabels.map((item) => item.label);
-
-    // addLabelToTextarea関数を呼び出し
-    addLabelToTextarea(commentField, labelTextsOnly);
+    // addLabelToTextarea関数を呼び出し - ソート済みのSelectedLabel配列をそのまま渡す
+    addLabelToTextarea(commentField, sortedLabels);
 
     // セレクターを閉じる
     setIsOpen(false);

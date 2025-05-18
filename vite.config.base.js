@@ -1,8 +1,7 @@
-import { defineConfig } from "vite";
 import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+export const generateViteConfig = (inputKey, inputPath) => ({
   plugins: [
     react({
       jsxImportSource: "@emotion/react",
@@ -18,13 +17,12 @@ export default defineConfig({
     emptyOutDir: false,
     rollupOptions: {
       input: {
-        content: resolve(__dirname, "src/content.tsx"),
-        options: resolve(__dirname, "src/options.ts"),
-        popup: resolve(__dirname, "src/popup.ts"),
+        [inputKey]: resolve(__dirname, inputPath),
       },
       output: {
         entryFileNames: "[name].js",
-        format: "es",
+        format: "iife", // ESモジュールではなくIIFE形式に変更
+        inlineDynamicImports: true, // 動的インポートをインライン化
       },
     },
   },

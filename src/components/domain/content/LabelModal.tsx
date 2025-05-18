@@ -11,7 +11,7 @@ interface LabelModalProps {
   isOpen: boolean;
   labelsConfig: LabelsConfig;
   selectedLabels: SelectedLabel[];
-  onLabelClick: (label: string, type: string) => void;
+  onLabelClick: React.ComponentProps<typeof LabelSelector>["onLabelClick"];
   onInsert: () => void;
   onCancel: () => void;
   onClear: () => void;

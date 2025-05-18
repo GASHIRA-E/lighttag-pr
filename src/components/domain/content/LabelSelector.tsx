@@ -8,7 +8,7 @@ interface LabelSelectorProps {
   labelsConfig: LabelsConfig;
   selectedLabels: SelectedLabel[];
   displayMode: DisplayMode;
-  onLabelClick: (label: string, type: string) => void;
+  onLabelClick: React.ComponentProps<typeof LabelGroup>["onLabelClick"];
 }
 
 const labelSelectorStyles = css`

@@ -7,7 +7,7 @@ import { css } from "@emotion/react";
 interface LabelGroupProps {
   group: LabelGroupType;
   selectedLabels: SelectedLabel[];
-  onLabelClick: (label: string, type: string) => void;
+  onLabelClick: (label: string, type: string, badgeStyle: string) => void;
   displayMode: DisplayMode;
 }
 
@@ -50,7 +50,7 @@ export function LabelGroup({
               label={item.label}
               description={item.description}
               isSelected={isSelected}
-              onClick={() => onLabelClick(item.label, group.type)}
+              onClick={() => onLabelClick(item.label, group.type, item.badgeStyle ?? "")}
               displayMode={displayMode}
             />
           );
