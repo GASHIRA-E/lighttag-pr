@@ -81,10 +81,13 @@ https://chromewebstore.google.com/detail/ccpienongmajbkedjgimfhondmfelenb?utm_so
 
 ## 開発
 
-- 開発モードで実行: `npm run build`
-- 変更を監視してビルド: `npm run watch`
-- コード整形: `npm run format:fix`
-- リント: `npm run lint:fix`
+- ビルド: `npm run build` (content、options、popupを一括ビルド)
+- 開発モード（変更監視）: `npm run dev` (変更を監視して自動ビルド)
+- コード整形: `npm run format:fix` (Biomeでコードフォーマット修正)
+- リント: `npm run lint:fix` (Biomeでコードリント修正)
+- ドキュメント生成: `npm run docs:build` (ドキュメントHTMLを生成)
+- ドキュメントサーバー: `npm run docs:server` (ローカルでドキュメントを表示)
+- 配布用ファイル作成: `npm run create-publish` (ビルドとZIP作成)
 
 ## 動作環境
 

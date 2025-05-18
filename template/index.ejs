@@ -77,44 +77,24 @@
     <div class="container">
       <h2 class="text-center mb-5">主な機能</h2>
       <div class="row g-4">
-        
-        
+        <%
+          const features=[
+            { title: "ラベルの追加" , description: "レビューコメント入力欄にさまざまなラベルを挿入するUIを提供します。"},
+            { title: "複数ラベル対応" , description: "複数ラベルを同時付与可能。例：[設計][FYI] コメント内容" },
+            { title: "ツールチップ表示" , description: "ラベルにマウスオーバーした際、説明文をツールチップで表示します。" },
+            { title: "チーム設定共有" , description: "観点リストをJSONでカスタマイズ・チーム共有できます。" }
+          ];
+        %>
+        <% features.forEach(feature=> { %>
         <div class="col-md-6 col-lg-3">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h3 class="card-title h5">ラベルの追加</h3>
-              <p class="card-text">レビューコメント入力欄にさまざまなラベルを挿入するUIを提供します。</p>
+              <h3 class="card-title h5"><%= feature.title %></h3>
+              <p class="card-text"><%= feature.description %></p>
             </div>
           </div>
         </div>
-        
-        <div class="col-md-6 col-lg-3">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="card-title h5">複数ラベル対応</h3>
-              <p class="card-text">複数ラベルを同時付与可能。例：[設計][FYI] コメント内容</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-6 col-lg-3">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="card-title h5">ツールチップ表示</h3>
-              <p class="card-text">ラベルにマウスオーバーした際、説明文をツールチップで表示します。</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-6 col-lg-3">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="card-title h5">チーム設定共有</h3>
-              <p class="card-text">観点リストをJSONでカスタマイズ・チーム共有できます。</p>
-            </div>
-          </div>
-        </div>
-        
+        <% }); %>
       </div>
     </div>
   </section>
@@ -125,36 +105,22 @@
       <h2 class="text-center mb-5">使い方</h2>
       <div class="row justify-content-center">
         <div class="col-md-8">
-          
-          
+          <%
+          const howToUseSteps=[
+            "PRの「Files changed」ページを開く",
+            "コメント入力欄の上の「ラベルを追加」ボタンをクリック",
+            "ドロップダウンからラベルを選択（複数選択可能）",
+            "「挿入」ボタンでコメント先頭にラベルを追加"
+          ];
+          %>
+          <% howToUseSteps.forEach((step, index)=> { %>
           <div class="card step-card mb-3">
             <div class="card-body d-flex align-items-center">
-              <div class="step-number">1</div>
-              <p class="mb-0">PRの「Files changed」ページを開く</p>
+              <div class="step-number"><%= index + 1 %></div>
+              <p class="mb-0"><%= step %></p>
             </div>
           </div>
-          
-          <div class="card step-card mb-3">
-            <div class="card-body d-flex align-items-center">
-              <div class="step-number">2</div>
-              <p class="mb-0">コメント入力欄の上の「ラベルを追加」ボタンをクリック</p>
-            </div>
-          </div>
-          
-          <div class="card step-card mb-3">
-            <div class="card-body d-flex align-items-center">
-              <div class="step-number">3</div>
-              <p class="mb-0">ドロップダウンからラベルを選択（複数選択可能）</p>
-            </div>
-          </div>
-          
-          <div class="card step-card mb-3">
-            <div class="card-body d-flex align-items-center">
-              <div class="step-number">4</div>
-              <p class="mb-0">「挿入」ボタンでコメント先頭にラベルを追加</p>
-            </div>
-          </div>
-          
+          <% }); %>
         </div>
       </div>
     </div>
@@ -166,29 +132,21 @@
       <h2 class="text-center mb-5">設定画面の使い方</h2>
       <div class="row justify-content-center">
         <div class="col-md-8">
-          
-          
+          <% 
+            const settingSteps=[
+              "拡張機能アイコンをクリックし、「設定を開く」をクリック",
+              "観点リストをフォームで編集もしくはJSONをインポート",
+              "「保存」ボタンをクリック"
+            ];
+          %>
+          <% settingSteps.forEach((step, index)=> { %>
           <div class="card step-card mb-3">
             <div class="card-body d-flex align-items-center">
-              <div class="step-number">1</div>
-              <p class="mb-0">拡張機能アイコンをクリックし、「設定を開く」をクリック</p>
+              <div class="step-number"><%= index + 1 %></div>
+              <p class="mb-0"><%= step %></p>
             </div>
           </div>
-          
-          <div class="card step-card mb-3">
-            <div class="card-body d-flex align-items-center">
-              <div class="step-number">2</div>
-              <p class="mb-0">観点リストをフォームで編集もしくはJSONをインポート</p>
-            </div>
-          </div>
-          
-          <div class="card step-card mb-3">
-            <div class="card-body d-flex align-items-center">
-              <div class="step-number">3</div>
-              <p class="mb-0">「保存」ボタンをクリック</p>
-            </div>
-          </div>
-          
+          <% }); %>
         </div>
       </div>
     </div>
