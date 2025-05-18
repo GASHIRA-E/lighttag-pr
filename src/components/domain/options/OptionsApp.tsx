@@ -13,7 +13,6 @@ type StatusType = "success" | "error" | null;
 const containerStyle = css`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  padding: 20px;
   max-width: 800px;
   margin: 0 auto;
 `;
@@ -29,14 +28,37 @@ const sectionStyle = css`
 
 const actionButtonsStyle = css`
   display: flex;
+  position: sticky;
+  bottom: 0;
   gap: 10px;
-  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ccc;
 `;
 
-const statusMessageStyle = css`
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 6px;
+const snackbarStyle = css`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 250px;
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 const successStyle = css`
@@ -93,8 +115,8 @@ export const OptionsApp: React.FC = () => {
     });
   };
 
-  // ステータスメッセージを表示
-  const showStatus = (message: string, type: "success" | "error"): void => {
+  // Snackbar表示
+  const showSnackbar = (message: string, type: "success" | "error"): void => {
     setStatus({ message, type });
 
     // 3秒後に非表示
@@ -106,14 +128,14 @@ export const OptionsApp: React.FC = () => {
   // 設定を保存
   const saveConfig = (): void => {
     chrome.storage.local.set({ labelsConfig }, () => {
-      showStatus("設定を保存しました", "success");
+      showSnackbar("設定を保存しました", "success");
     });
   };
 
   // 設定をエクスポート
   const exportConfig = (): void => {
     setConfigJson(JSON.stringify(labelsConfig, null, 2));
-    showStatus("設定をエクスポートしました", "success");
+    showSnackbar("設定をエクスポートしました", "success");
   };
 
   // 設定をインポート
@@ -130,13 +152,13 @@ export const OptionsApp: React.FC = () => {
 
       // インポート成功時に自動保存
       chrome.storage.local.set({ labelsConfig: newConfig }, () => {
-        showStatus("設定をインポートして保存しました", "success");
+        showSnackbar("設定をインポートして保存しました", "success");
       });
     } catch (error) {
       if (error instanceof Error) {
-        showStatus(`エラー: ${error.message}`, "error");
+        showSnackbar(`エラー: ${error.message}`, "error");
       } else {
-        showStatus("不明なエラーが発生しました", "error");
+        showSnackbar("不明なエラーが発生しました", "error");
       }
     }
   };
@@ -229,13 +251,6 @@ export const OptionsApp: React.FC = () => {
         </Button>
       </div>
 
-      <ConfigImportExport
-        configJson={configJson}
-        onConfigJsonChange={setConfigJson}
-        onExport={exportConfig}
-        onImport={importConfig}
-      />
-
       <div css={actionButtonsStyle}>
         <Button
           variant="primary"
@@ -243,10 +258,16 @@ export const OptionsApp: React.FC = () => {
         >
           設定を保存
         </Button>
+        <ConfigImportExport
+          configJson={configJson}
+          onConfigJsonChange={setConfigJson}
+          onExport={exportConfig}
+          onImport={importConfig}
+        />
       </div>
 
       {status.type && (
-        <div css={[statusMessageStyle, status.type === 'success' ? successStyle : errorStyle]}>
+        <div css={[snackbarStyle, status.type === 'success' ? successStyle : errorStyle]}>
           {status.message}
         </div>
       )}
