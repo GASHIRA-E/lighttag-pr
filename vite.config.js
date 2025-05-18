@@ -19,7 +19,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         content: resolve(__dirname, "src/content.tsx"),
-        options: resolve(__dirname, "src/options.ts"),
+        options: resolve(__dirname, "src/options.tsx"),
         popup: resolve(__dirname, "src/popup.ts"),
       },
       output: {
