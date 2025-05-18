@@ -16,7 +16,10 @@
     "lint:fix": "biome check --apply .",
     "format": "biome format .",
     "format:fix": "biome format --write .",
-    "docs": "http-server ./docs -p 8080 -o"
+    "docs": "concurrently \"npm run docs:server\" \"npm run docs:watch\"",
+    "docs:server": "http-server ./docs -p 8080 -o",
+    "docs:watch": "ejsc template/index.ejs --out docs --watch",
+    "docs:build": "ejsc template/index.ejs --out docs/index.html"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -24,6 +27,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "@wcj/ejs-cli": "^2.0.0",
     "concurrently": "^9.1.2",
     "http-server": "^14.1.1",
     "typescript": "^5.0.0",
