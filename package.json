@@ -3,13 +3,23 @@
   "version": "1.0.0",
   "description": "LightTag PR Extension",
   "scripts": {
-    "build": "vite build",
-    "watch": "vite build --watch",
+    "build:content": "vite build --config vite.content.config.js",
+    "build:options": "vite build --config vite.options.config.js",
+    "build:popup": "vite build --config vite.popup.config.js",
+    "build": "concurrently \"npm run build:content\" \"npm run build:options\" \"npm run build:popup\"",
+    "create-publish": "npm run build && zip -r publish/lighttag-pr-$(date \"+%Y-%m-%d-%H-%M-%S\").zip ./lighttag-pr",
+    "dev:content": "vite build --watch --config vite.content.config.js",
+    "dev:options": "vite build --watch --config vite.options.config.js",
+    "dev:popup": "vite build --watch --config vite.popup.config.js",
+    "dev": "concurrently \"npm run dev:content\" \"npm run dev:options\" \"npm run dev:popup\"",
     "lint": "biome check .",
     "lint:fix": "biome check --apply .",
     "format": "biome format .",
     "format:fix": "biome format --write .",
-    "docs": "http-server ./docs -p 8080 -o"
+    "docs": "concurrently \"npm run docs:server\" \"npm run docs:watch\"",
+    "docs:server": "http-server ./docs -p 8080 -o",
+    "docs:watch": "ejsc template/index.ejs --out docs --watch",
+    "docs:build": "ejsc template/index.ejs --out docs/index.html"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -17,6 +27,8 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "@wcj/ejs-cli": "^2.0.0",
+    "concurrently": "^9.1.2",
     "http-server": "^14.1.1",
     "typescript": "^5.0.0",
     "vite": "^5.0.0"

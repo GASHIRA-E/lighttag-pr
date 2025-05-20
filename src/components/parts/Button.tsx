@@ -1,7 +1,7 @@
 import type React from "react";
 import { css } from "@emotion/react";
 
-type ButtonVariant = "primary" | "secondary" | "warning" | "default";
+type ButtonVariant = "primary" | "secondary" | "warning" | "danger" | "default";
 type ButtonSize = "small" | "medium" | "large";
 
 interface ButtonProps {
@@ -77,6 +77,14 @@ const variantStyles = {
     border: 1px solid rgba(27, 31, 36, 0.15);
     &:hover:not(:disabled) {
       background-color: var(--color-warning-hover, #9e7200);
+    }
+  `,
+  danger: css`
+    background-color: #cf222e;
+    color: #ffffff;
+    border: 1px solid rgba(27, 31, 36, 0.15);
+    &:hover:not(:disabled) {
+      background-color: #a40e26;
     }
   `,
   default: css`
