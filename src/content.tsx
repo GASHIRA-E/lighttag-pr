@@ -31,9 +31,9 @@ function mountReactComponents(labelsConfig: LabelsConfig): void {
     return;
   }
 
-  // GitHub PR画面のテキストエリアのコンテナを特定
+  // GitHub PR画面の新規コメント入力欄を取得 ※編集モードのコメント入力欄は除外
   const commentForm = document.querySelectorAll<HTMLFormElement>(
-    ".js-previewable-comment-form",
+    "tab-container.js-previewable-comment-form"
   );
 
   if (commentForm.length === 0) return;
@@ -66,7 +66,7 @@ function mountReactComponents(labelsConfig: LabelsConfig): void {
       <CommentHelperApp
         commentField={commentField}
         labelsConfig={labelsConfig}
-      />,
+      />
     );
   }
 }
