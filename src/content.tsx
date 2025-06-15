@@ -14,39 +14,31 @@ const isPullRequestFilesTab = (): boolean => {
 
 // コメント入力欄にReactコンポーネントをマウントする関数
 const mountCommentHelpers = (
-  commentForm: NodeListOf<HTMLFormElement>,
+  form: HTMLElement,
   labelsConfig: LabelsConfig
 ): void => {
-  for (const form of commentForm) {
-    // すでにマウントされている場合はスキップ
-    if (form.dataset.labelHelperInitialized) continue;
+  // フォーム内のテキストエリアを取得
+  const commentField =
+    form.querySelector<HTMLTextAreaElement>(".js-comment-field");
 
-    // フォーム内のテキストエリアを取得
-    const commentField =
-      form.querySelector<HTMLTextAreaElement>(".js-comment-field");
+  // テキストエリアが見つからない場合はスキップ
+  if (!commentField) return;
 
-    // テキストエリアが見つからない場合はスキップ
-    if (!commentField) continue;
+  // 初期化済みマークを付ける
+  form.dataset.labelHelperInitialized = "true";
 
-    // 初期化済みマークを付ける
-    form.dataset.labelHelperInitialized = "true";
+  // コンテナを作成
+  const helperContainer = document.createElement("div");
+  helperContainer.className = "gh-comment-helper-container";
 
-    // コンテナを作成
-    const helperContainer = document.createElement("div");
-    helperContainer.className = "gh-comment-helper-container";
+  // コメント入力欄の前に挿入
+  form.parentElement?.insertBefore(helperContainer, form);
 
-    // コメント入力欄の前に挿入
-    form.parentElement?.insertBefore(helperContainer, form);
-
-    // Reactルートを作成してマウント
-    const root = createRoot(helperContainer);
-    root.render(
-      <CommentHelperApp
-        commentField={commentField}
-        labelsConfig={labelsConfig}
-      />
-    );
-  }
+  // Reactルートを作成してマウント
+  const root = createRoot(helperContainer);
+  root.render(
+    <CommentHelperApp commentField={commentField} labelsConfig={labelsConfig} />
+  );
 };
 
 // Reactコンポーネントをコメント入力欄にマウント
@@ -57,14 +49,54 @@ const mountReactComponents = (labelsConfig: LabelsConfig): void => {
   }
 
   // GitHub PR画面の新規コメント入力欄を取得 ※編集モードのコメント入力欄は除外
-  const commentForm = document.querySelectorAll<HTMLFormElement>(
+  const commentForm = document.querySelectorAll<HTMLElement>(
     "tab-container.js-previewable-comment-form"
   );
 
-  if (commentForm.length === 0) return;
+  if (commentForm.length !== 0) {
+    for (const form of commentForm) {
+      if (form.dataset.labelHelperInitialized) continue;
 
-  // 各入力欄にReactコンポーネントを追加
-  mountCommentHelpers(commentForm, labelsConfig);
+      // 各入力欄にReactコンポーネントを追加
+      mountCommentHelpers(form, labelsConfig);
+    }
+  }
+
+  // 編集モードのコメント入力欄を取得
+  const editCommentParent =
+    document.querySelectorAll<HTMLFormElement>(".js-comment");
+
+  for (const parent of editCommentParent) {
+    // parent に .is-comment-editing がある場合は表示されるので処理を行う
+    if (parent.classList.contains("is-comment-editing")) {
+      // 編集モードのコメント入力欄を取得
+      const editCommentField = parent.querySelector<HTMLElement>(
+        "div.js-previewable-comment-form"
+      );
+
+      if (editCommentField) {
+        if (editCommentField.dataset.labelHelperInitialized) continue;
+        mountCommentHelpers(editCommentField, labelsConfig);
+      }
+    } else {
+      // 編集モードが非表示なのでラベルボタンを削除する
+      const ghHelperContainer = parent.querySelector(
+        ".gh-comment-helper-container"
+      );
+      if (ghHelperContainer) {
+        ghHelperContainer.remove();
+      }
+
+      // 編集モードのコメント入力欄を取得
+      const editCommentField = parent.querySelector<HTMLElement>(
+        "div.js-previewable-comment-form"
+      );
+
+      if (editCommentField) {
+        delete editCommentField.dataset.labelHelperInitialized;
+      }
+    }
+  }
 };
 
 // 拡張機能の初期化

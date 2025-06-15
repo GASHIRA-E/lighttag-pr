@@ -4,7 +4,17 @@
 export function createObserver(callback: () => void): MutationObserver {
   const observer = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
+      // ノードの追加を監視
       if (mutation.addedNodes.length) {
+        callback();
+        break;
+      }
+
+      // クラス変更を監視
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
         callback();
         break;
       }
@@ -15,6 +25,8 @@ export function createObserver(callback: () => void): MutationObserver {
   observer.observe(document.body, {
     childList: true,
     subtree: true,
+    attributes: true,
+    attributeFilter: ["class"],
   });
 
   return observer;
